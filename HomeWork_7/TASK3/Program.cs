@@ -31,28 +31,26 @@ void FillArray(int[,] matr)
     }
 }
 
-
-double average = 0;
-int sum = 0;
 int[,] matrix = new int[5, 5];
 
-int SumString(int j, int[,] matr)
+double SumString(int[,] arr, int j)
 {
-    for (int i = 0; i < matr.GetLength(0); i++)
+    double sum = 0;
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        sum = sum + matr[i,j];
+        sum = sum + arr[i,j];
     }
     return sum;
 }
 
-double FillArrayAver(double[] matr, int arrleng)
+void FillArrayAver(double[] matr)
 {
-    for (int columns = 0; columns < matr.Length; columns++)
+    for (int i = 0; i < matr.Length; i++)
     {
-        matr[columns] = SumString(columns,matrix) / arrleng;
+        matr[i] = SumString(matrix, i) / matr.Length;        
     }    
 }
-double PrintArrayAver(double[] matr)
+void PrintArrayAver(double[] matr)
 {
     for (int columns = 0; columns < matr.Length; columns++)
         {
@@ -63,6 +61,6 @@ double PrintArrayAver(double[] matr)
 FillArray(matrix);
 PrintArray(matrix);
 double[] aver = new double[matrix.GetLength(1)];
-FillArrayAver(aver,aver.Length);
-average = PrintArrayAver(aver);
-System.Console.WriteLine($"Среднее арифметическое каждого столбца: {average}");
+FillArrayAver(aver);
+System.Console.Write($"Среднее арифметическое каждого столбца: ");
+PrintArrayAver(aver);
